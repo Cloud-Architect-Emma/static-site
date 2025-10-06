@@ -1,12 +1,10 @@
 name: Deploy Static Site to GitHub Pages
 
-# Trigger the workflow when pushing to main branch
 on:
   push:
     branches:
       - main
 
-# Permissions required for GitHub Pages deployment
 permissions:
   contents: read
   pages: write
@@ -17,22 +15,17 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # 1. Checkout the repository
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      # 2. Configure GitHub Pages
       - name: Setup GitHub Pages
         uses: actions/configure-pages@v3
 
-      # 3. Upload the static site artifact
-      # Replace 'static-site' with your folder if your site files are in a subfolder
       - name: Upload site artifact
         uses: actions/upload-pages-artifact@v2
         with:
           path: .
 
-      # 4. Deploy to GitHub Pages
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v2
 
